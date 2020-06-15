@@ -1,10 +1,6 @@
 .DS_Store
 .idea/
-/log
 **/nginx/log/*
 !**/nginx/log/.gitkeep
-/QYH-service
-/main
-nohup.out
 **/postgresql/*
 !**/postgresql/.gitkeep

@@ -1,5 +1,5 @@
 QYH_ENV := staging
-QYH_REPO := git@github.com:chinabeishi/QYH-service.git
+QYH_REPO :=
 WORK_DIR := ～/work
 DOCKER_COMPOSE_DIR := ./deploy/$(QYH_ENV)
 

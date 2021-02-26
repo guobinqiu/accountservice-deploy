@@ -8,17 +8,6 @@ services:
       - "6379:6379"
     volumes:
       - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
-  postgresql:
-    image: postgres
-    ports:
-      - "5432:5432"
-    volumes:
-      - ./postgresql/data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: test
-      POSTGRES_DB: qyh
-      TZ: "Asia/Shanghai"
   nginx:
     image: nginx
     ports:

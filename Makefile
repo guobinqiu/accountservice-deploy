@@ -1,14 +1,14 @@
-QYH_ENV := staging
-QYH_REPO := git@github.com:chinabeishi/QYH-service.git
-WORK_DIR := ~/work
-APP_NAME := QYH-service
+APP_ENV := prod
+APP_REPO :=
+WORK_DIR := ~/workspace
+APP_NAME := accountservice
 PROJECT_ROOT = $(WORK_DIR)/$(APP_NAME)
-DOCKER_COMPOSE_DIR := ./deploy/$(QYH_ENV)
+DOCKER_COMPOSE_DIR := ./deploy/$(APP_ENV)
 
 all: setup start
 
 setup:
-	git clone $(QYH_REPO) $(PROJECT_ROOT)
+	#git clone $(APP_REPO) $(PROJECT_ROOT)
 	sudo yum -y install \
 		docker \
 		golang \
@@ -19,10 +19,10 @@ start:
 	sudo systemctl start docker.service
 	cd $(DOCKER_COMPOSE_DIR) && sudo docker-compose up -d
 	sleep 2
-	cd $(PROJECT_ROOT) && ./qyhctl.sh build && QYH_ENV=$(QYH_ENV) ./qyhctl.sh start
+	cd $(PROJECT_ROOT) && ./server.sh build && APP_ENV=$(APP_ENV) ./server.sh start
 
 stop:
-	cd $(PROJECT_ROOT) && ./qyhctl.sh stop
+	cd $(PROJECT_ROOT) && ./server.sh stop
 	cd $(DOCKER_COMPOSE_DIR) && sudo docker-compose down
 	sudo systemctl stop docker.service
 
